@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+    #circle {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: green;
+    box-sizing: border-box;
+        }
+
+        .squre{
+
+    background-color: white;
+    position: relative;
+    width: 75px;
+    height: 75px;
+    left: 38px;
+    top: 40px;
+
+        }
+
+        .tringle{
+        background-color: transparent;
+    position: relative;
+    left: 38px;
+    top: 40px;
+    width: 0;
+    height: 0;
+    border-bottom: 75px solid red;
+    border-right: 75px solid transparent;
+        }
+
+        .btn{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="circle">
+            <div class="squre" id="shape"></div>
+        </div>
+        
+        <button class="btn" id="shape-btn">change shape</button>
+        <button class="btn" id="color-btn">change color</button>
+
+    </div>
+
+    <script>
+      
+      const generateColor = ()=>{
+
+        let color = ["red", "green", "blue", "yellow", "orange", "black"];
+        const colorIdx = Math.floor(Math.random()*color.length);
+        return color[colorIdx];
+
+      }
+
+      document.getElementById("color-btn").addEventListener("click", () => {
+        const randomColor = generateColor();
+         document.getElementById("circle").style.backgroundColor = randomColor;
+      });
+
+      document.getElementById("shape-btn").addEventListener("click",()=>{
+        
+        let currenttClass = document.getElementById("shape").getAttribute("class");
+        if(currenttClass == "squre"){
+            document.getElementById("shape").setAttribute("class", "tringle");
+        } else{
+            document.getElementById("shape").setAttribute("class", "squre");
+        }
+      })
+
+
+
+    </script>
+</body>
+</html>
